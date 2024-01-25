@@ -8,10 +8,10 @@
 #  --bpe_codes "data/para/codes.40000.bpe.en" \
 #  --paraphraser_dict 'data-bin/para/' \
 #  --output_SR_file "results/swords-v1.1_test_mygenerator.lsr.json"  
-TEST_FILE=data/LS14/test/coinco_test.preprocessed
-TEST_GOLDEN_FILE=data/LS14/test/coinco_test.gold
-OUTPUT=ls14.out
-OUTPUT_SCORE=ls14.scores.out
+TEST_FILE=data/LSPro/test/processed.tsv
+TEST_GOLDEN_FILE=data/LSPro/test/gold_prof_acc.tsv
+OUTPUT=lspro.out
+OUTPUT_SCORE=lspro.scores.out
 
 
 python3 LSPara.multi.ls14.py \

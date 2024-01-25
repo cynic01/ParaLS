@@ -56,8 +56,8 @@ def gen_gpt2_string(tgt_dict,input):
         input=torch.tensor([input])
     return tgt_dict.bpe.decode(tgt_dict.task.source_dictionary.string(input))
 
-bart_scorer=BARTScorer(device="cuda",checkpoint="/home/yz/liukang/liukang/huggingface/facebook/bart-large-cnn")
-bart_scorer.load(path="/home/yz/liukang/liukang/huggingface/facebook/bart-large-cnn/bart.pth")
+bart_scorer=BARTScorer(device="cuda",checkpoint="facebook/bart-large-cnn")
+bart_scorer.load(path="bart.pth")
 
 
 
@@ -69,9 +69,9 @@ bleurt_scorer.eval()
 
 
 import json
-word_pos_fp="../../Gloss/LS_infer/vocab/word_pos.json"
-with open(word_pos_fp,"r") as f:
-    pos_vocab = json.loads( f.read().strip() )
+# word_pos_fp="../../Gloss/LS_infer/vocab/word_pos.json"
+# with open(word_pos_fp,"r") as f:
+#     pos_vocab = json.loads( f.read().strip() )
 
 from tqdm import tqdm
 def lemma_word(target, target_pos):

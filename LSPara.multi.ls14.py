@@ -48,21 +48,21 @@ from bleurt import score
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 
-bart_scorer=BARTScorer(device="cuda",checkpoint="/home/yz/liukang/liukang/huggingface/facebook/bart-large-cnn")
-bart_scorer.load(path="/home/yz/liukang/liukang/huggingface/facebook/bart-large-cnn/bart.pth")
+bart_scorer=BARTScorer(device="cuda",checkpoint="facebook/bart-large-cnn")
+bart_scorer.load(path="bart.pth")
 
 
-bleurt_tokenizer = AutoTokenizer.from_pretrained("bleurt-large-512")
+bleurt_tokenizer = AutoTokenizer.from_pretrained("Elron/bleurt-large-512")
 
-bleurt_scorer = AutoModelForSequenceClassification.from_pretrained("bleurt-large-512").cuda()
+bleurt_scorer = AutoModelForSequenceClassification.from_pretrained("Elron/bleurt-large-512").cuda()
 bleurt_scorer.eval()
 
 
 
 import json
-word_pos_fp="../../Gloss/LS_infer/vocab/word_pos.json"
-with open(word_pos_fp,"r") as f:
-    pos_vocab = json.loads( f.read().strip() )
+# word_pos_fp="../../Gloss/LS_infer/vocab/word_pos.json"
+# with open(word_pos_fp,"r") as f:
+#     pos_vocab = json.loads( f.read().strip() )
 
 from tqdm import tqdm
 def lemma_word(target, target_pos):
@@ -855,7 +855,7 @@ def main():
     range2_log_softmax=np.arange(1,2,1)
 
     for log_quto in range2_log_softmax:
-        work_dir="ls14_search_results/log."+str(round(log_quto,2))+"/"
+        work_dir="lspro_search_results/log."+str(round(log_quto,2))+"/"
         if not os.path.isdir(work_dir):
             os.makedirs(work_dir)
 
@@ -904,7 +904,7 @@ def main():
 
                         count_1+=1  
             print("*"*100)
-            test_golden_file="data/LS14/test/coinco_test.gold"
+            test_golden_file=args.eval_gold_dir
             output_results=work_dir+args.output_SR_file+".embed."+str(embed_quto)
             results_file=work_dir+args.output_score_file+".embed."+str(embed_quto)
             evaluation_metric.calculation_perl(
