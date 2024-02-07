@@ -30,6 +30,10 @@ sh run_LS_Paraphraser.multi.ls14.sh # Transformer
 
 sh run_LS_Paraphraser.multi.ls14.bart.sh # BART
 
+## ProLex Notes
+
+In the above shell scripts, you can modify the TEST_GOLDEN_FILE constant to change between acceptable (data/LSPro/test/gold_acc.tsv) and proficiency-oriented (data/LSPro/test/gold_prof_acc.tsv) substitutes if you would like to run the ParaLS evaluation scripts. However, in ProLex we use our own evaluation script and only use this ParaLS repo for substitute generation, so this does not matter.
+
 
 # Citation
 Jipeng Qiang and Kang Liu contributed the code. 
